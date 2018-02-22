@@ -1,0 +1,174 @@
+#include <iostream>
+#include <cmath>
+#include <cstring>
+#include<fstream>
+using namespace std;
+int main() {
+int i=0;
+string d1,d2,d3,cc;
+int d11;
+char c,c1; 
+ ifstream infile1,infile2,infile3; 
+   infile1.open("attemptout.txt");
+  infile2.open("durationout.txt");
+  infile3.open("waitingout.txt");
+ofstream out;
+out.open("final.txt");
+infile1 >> d1;  
+infile2 >> d2;  
+infile3 >> d3; 
+ 
+while(i<100)
+{
+if(d1=="low")
+{
+if(d2=="low")
+{
+cout<<"Normal\n";
+cc="Normal";
+}
+}
+if(d1=="low")
+{
+if(d2=="mid")
+{
+cout<<"Normal\n";
+cc="Normal";
+}
+}
+if(d1=="low")
+{
+if(d2=="high")
+{
+cout<<"Suspected\n";
+cc="Suspected";
+}
+}
+if(d1=="mid")
+{
+if(d2=="low")
+{
+cout<<"Normal\n";
+cc="Normal";
+}
+}
+if(d1=="mid")
+{
+if(d2=="mid")
+{
+cout<<"Suspected\n";
+cc="Suspected";
+}
+}
+if(d1=="mid")
+{
+if(d2=="high")
+{
+cout<<"Greedy\n";
+cc="Greedy";
+}
+}
+if(d1=="high")
+{
+if(d2=="low")
+{
+cout<<"Suspected\n";
+cc="Suspected";
+}
+}
+if(d1=="high")
+{
+if(d2=="mid")
+{
+cout<<"Suspected\n";
+cc="Suspected";
+}
+}
+if(d1=="high")
+{
+if(d2=="high")
+{
+cout<<"Greedy\n";
+cc="Greedy";
+}
+}
+cout<<"ssssssssssssss";
+if(cc=="Normal")
+{
+if(d3=="low")
+{
+cout<<"Normal\n";
+out <<"Normal\n";
+}
+}
+if(cc=="Normal")
+{
+if(d3=="mid")
+{
+cout<<"Normal\n";
+out <<"Normal\n";
+}
+}
+if(cc=="Normal")
+{
+if(d3=="high")
+{
+cout<<"Suspected\n";
+out <<"Suspected\n";
+}
+}
+if(cc=="Suspected")
+{
+if(d3=="low")
+{
+cout<<"Suspected\n";
+out <<"Suspected\n";
+}
+}
+if(cc=="Suspected")
+{
+if(d3=="mid")
+{
+cout<<"Suspected\n";
+out <<"Suspected\n";
+}
+}
+if(cc=="Suspected")
+{
+if(d3=="high")
+{
+cout<<"Greedy\n";
+out <<"Greedy\n";
+}
+}
+if(cc=="Greedy")
+{
+if(d3=="low")
+{
+cout<<"Greedy\n";
+out <<"Greedy\n";
+}
+}
+if(cc=="Greedy")
+{
+if(d3=="mid")
+{
+cout<<"Greedy\n";
+out <<"Greedy\n";
+}
+}
+if(cc=="Greedy")
+{
+if(d3=="high")
+{
+cout<<"Greedy\n";
+out <<"Greedy\n";
+}
+}
+infile1 >> d1;  
+infile2 >> d2;  
+infile3 >> d3;  
+i++;
+}
+    return 0;
+}

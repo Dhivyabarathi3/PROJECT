@@ -1,0 +1,23 @@
+BEGIN{
+for(i=0;i<100;i++)
+a[i]=0;
+}
+
+{
+if($1=="s")
+{
+for(j=0;j<100;j++)
+{
+if($3=="_"j"_")
+{
+a[j]=a[j]+1;
+}
+}
+}
+}
+
+END { 
+for (key in a) {
+ print a[key]
+} 
+}

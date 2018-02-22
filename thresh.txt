@@ -1,0 +1,51 @@
+ BEGIN {
+count = 0;
+c=0;
+c1=0;
+c2=0;
+sent=0;
+receive=0;
+startTime=0;
+stopTime=0;
+st=0;
+st1=0;
+st2=0;
+st3=0;
+}
+{
+  if ( $1 == "s" ) {
+ 
+    if ($2 < startTime){
+      startTime = $2
+    }
+}
+  if ( $1 == "r" ) {
+
+    if ($2 > stopTime) {
+      stopTime = $2
+    }
+  }
+st=stopTime-startTime;
+st1=st/25;
+st2=0.6*st;
+st3=(st1+st2)/2;
+}
+{
+if( $1 == "f" ) {
+ count++;
+ } 
+}
+{
+c=count/25;
+c1=.75*count;
+c2=(c+c1)/2;
+}
+ END { 
+  print "Connection Attempt = "count;
+print "Low threshold = "c;
+print "Medium = "c2;
+print "High = "c1;
+ printf("connection duration low %d\n",st1);
+printf("medium %d\n",st3);
+ printf("high %d\n",st2);
+  }

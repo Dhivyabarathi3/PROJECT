@@ -1,0 +1,105 @@
+#include <iostream>
+#include <cmath>
+#include <cstring>
+#include <fstream>
+using namespace std;
+class CTrapezoid 
+{
+private:
+	double dLeftMiddle, dRightMiddle;
+double dLeft, dRight,t;
+double mid,mid1,mid2;
+public:
+
+    void setMiddle(double dL, double dR) 
+	{
+		dLeftMiddle=dL; dRightMiddle=dR;
+	}
+void setinterval(double l,double r)
+{
+dLeft=l;
+dRight=r;
+}
+void middle()
+{
+mid=(dLeftMiddle+dRightMiddle)/2;
+mid1=(dLeftMiddle+mid)/2;
+mid2=(mid+dRightMiddle)/2;
+cout<<mid<<"\n";
+cout<<mid1<<"\n";
+cout<<mid2<<"\n";
+}	
+double getValuex(double t)
+{
+		 if(t<=dLeftMiddle){
+			return 0;}
+		else if(t<mid && t>dLeftMiddle){
+			//cout<<((t-dLeftMiddle)/(mid-dLeftMiddle));
+			if(t<mid1)
+				return 0;
+			else 
+				return 0.5;
+				}
+		else if(t>mid && t<dRightMiddle)
+			{
+			//cout<<((t-mid)/(dRightMiddle-mid));
+			if(t>mid2)
+				return 1;
+			else
+				return 0.5; 
+			}
+		else if(t>=dRightMiddle){
+			return 1;}
+		else if(t>=mid1 && t<=mid2){
+			return 0.5;}
+		else 
+		    return 0;
+}
+};
+ main()
+{
+	CTrapezoid FuzzySet;
+	double dLeft, dRight,dL,dR;
+dLeft=0;
+dRight=6862;
+dL=274.48;
+dR=5146.5;
+FuzzySet.setinterval(dLeft,dRight);
+FuzzySet.setMiddle(dL,dR);
+FuzzySet.middle();
+	double dValue;
+ifstream infile; 
+   infile.open("attempt.txt");
+ofstream outfile;
+   outfile.open("attemptout.txt");
+cout << "Reading from the file" << endl; 
+infile >> dValue;  
+int c=0;
+while(infile != NULL)
+{   
+cout << dValue<< endl;
+//if((dValue>=dLeft)&&(dValue<=dRight)) 
+//cout<<"In the interval";
+//else 
+//cout<<"Not in the interval";	 
+//		 cout<<endl;
+		 double x=FuzzySet.getValuex(dValue);
+if(x==1)
+{
+cout<<"high";
+outfile <<"high\n";
+}
+else if(x==0)
+
+{
+cout<<"low";
+outfile <<"low\n";
+}
+else{
+cout<<"mid";
+outfile <<"mid\n";
+}
+c=c+1;
+infile >> dValue;  	
+}
+}
